@@ -1,0 +1,175 @@
+<mxfile host="65bd71144e">
+    <diagram id="M3bfWLLm7BZ_zA_e22AC" name="Page-1">
+        <mxGraphModel dx="1431" dy="1894" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="ログイン処理&#10;Login Contoroller" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="70" width="160" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="2">
+                    <mxGeometry y="40" width="160" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="+ authenticate_user(&#10;       user_id, password&#10;    )" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="2">
+                    <mxGeometry y="48" width="160" height="52" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;・クラス図&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="10" y="20" width="295" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="ユーザ認証&#10;Service" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="70" width="160" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="10">
+                    <mxGeometry y="40" width="160" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="+ authenticate_user(&#10;       user_id, password&#10;    )" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="10">
+                    <mxGeometry y="48" width="160" height="52" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="&lt;&lt;interface&gt;&gt;&#10;ユーザ&#10;Repository" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=60;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="70" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="15">
+                    <mxGeometry y="60" width="160" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="+ authenticate_user(&#10;       user_id, password&#10;    )" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="15">
+                    <mxGeometry y="68" width="160" height="52" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="ユーザ&#10;Repository" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="880" y="76" width="160" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="18">
+                    <mxGeometry y="40" width="160" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="+ authenticate_user(&#10;       user_id, password&#10;    )" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="18">
+                    <mxGeometry y="48" width="160" height="52" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" style="edgeStyle=none;html=1;dashed=1;strokeWidth=2;fontSize=18;startArrow=none;startFill=0;endArrow=block;endFill=0;endSize=19;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="20">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="870" y="150" as="sourcePoint"/>
+                        <mxPoint x="763" y="150" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeWidth=2;fontSize=18;startArrow=none;startFill=0;endArrow=classicThin;endFill=1;endSize=19;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="4" target="14">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="170" y="180" as="sourcePoint"/>
+                        <mxPoint x="340" y="181.36000000000013" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="23" style="edgeStyle=none;html=1;entryX=-0.007;entryY=0.118;entryDx=0;entryDy=0;dashed=1;strokeWidth=2;fontSize=18;startArrow=none;startFill=0;endArrow=classicThin;endFill=1;endSize=19;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryPerimeter=0;" edge="1" parent="1" source="14" target="17">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="209.99999999999977" y="154" as="sourcePoint"/>
+                        <mxPoint x="329.9999999999998" y="154" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="24" value="・フロントから&lt;br&gt;　ユーザID、パスワードを取得&lt;br&gt;・フロントにログインが&lt;br&gt;　成功したユーザIDを返す" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeColor=#000000;fontSize=14;fillColor=#E6FFCC;position2=0;align=left;size=40;position=0.03;" vertex="1" parent="1">
+                    <mxGeometry x="130" y="-60" width="210" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="・リポジトリから&lt;br&gt;　ユーザ情報を取得&lt;br&gt;・ユーザ情報が&lt;br&gt;　取得できなければ -1 を返す" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeColor=#000000;fontSize=14;fillColor=#E6FFCC;position2=0;align=left;size=40;position=0.03;" vertex="1" parent="1">
+                    <mxGeometry x="360" y="-60" width="210" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="・DBに該当ユーザが&lt;br&gt;　存在するか問い合わせ" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeColor=#000000;fontSize=14;fillColor=#E6FFCC;position2=0.86;align=left;size=40;position=0.76;base=30;" vertex="1" parent="1">
+                    <mxGeometry x="810" y="-60" width="180" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="日用品照会・登録・削除&#10;Item Contoroller" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="425" width="210" height="250" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="27">
+                    <mxGeometry y="40" width="210" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="+ get_usage_amount(user_id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="27">
+                    <mxGeometry y="48" width="210" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="+ get_need_item_recently(user_id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="27">
+                    <mxGeometry y="80" width="210" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="+ get_all_items(user_id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="27">
+                    <mxGeometry y="112" width="210" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="+ delete_item(item_id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="27">
+                    <mxGeometry y="144" width="210" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="+ add_item(&#10;      item_name, item_tage, &#10;      price, span, img_file_name&#10;   )" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="27">
+                    <mxGeometry y="176" width="210" height="74" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="日用品照会・登録・削除&#10;Item Service" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="340" y="425" width="210" height="250" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="36">
+                    <mxGeometry y="40" width="210" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="+ get_usage_amount(user_id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="36">
+                    <mxGeometry y="48" width="210" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="+ get_need_item_recently(user_id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="36">
+                    <mxGeometry y="80" width="210" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="+ get_all_items(user_id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="36">
+                    <mxGeometry y="112" width="210" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="+ delete_item(item_id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="36">
+                    <mxGeometry y="144" width="210" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" value="+ add_item(&#10;      item_name, item_tage, &#10;      price, span, img_file_name&#10;   )" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="36">
+                    <mxGeometry y="176" width="210" height="74" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="&lt;&lt;interface&gt;&gt;&#10;日用品 Item Repository" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="630" y="425" width="210" height="186" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="42">
+                    <mxGeometry y="40" width="210" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="+ get_all_items(user_id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="42">
+                    <mxGeometry y="48" width="210" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="62" value="+ delete_item(item_id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="42">
+                    <mxGeometry y="80" width="210" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" value="+ add_item(&#10;      item_name, item_tage, &#10;      price, span, img_file_name&#10;   )" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="42">
+                    <mxGeometry y="112" width="210" height="74" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="日用品 Item Repository" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="910" y="425" width="210" height="172" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="48">
+                    <mxGeometry y="26" width="210" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="+ get_all_items(user_id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="48">
+                    <mxGeometry y="34" width="210" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="+ delete_item(item_id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="48">
+                    <mxGeometry y="66" width="210" height="32" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" value="+ add_item(&#10;      item_name, item_tage, &#10;      price, span, img_file_name&#10;   )" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="48">
+                    <mxGeometry y="98" width="210" height="74" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" style="edgeStyle=none;html=1;dashed=1;strokeWidth=2;fontSize=18;startArrow=none;startFill=0;endArrow=classicThin;endFill=1;endSize=19;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="249.99999999999977" y="541" as="sourcePoint"/>
+                        <mxPoint x="340" y="541" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="55" style="edgeStyle=none;html=1;dashed=1;strokeWidth=2;fontSize=18;startArrow=none;startFill=0;endArrow=classicThin;endFill=1;endSize=19;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="550" y="541" as="sourcePoint"/>
+                        <mxPoint x="628.9999999999998" y="541" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="56" style="edgeStyle=none;html=1;dashed=1;strokeWidth=2;fontSize=18;startArrow=none;startFill=0;endArrow=block;endFill=0;endSize=19;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="910" y="541" as="sourcePoint"/>
+                        <mxPoint x="840" y="541" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="57" value="・Contoroller は、&lt;br&gt;　フロントからのデータを&lt;br&gt;　Serviceに流して、&lt;br&gt;　Serviceからの結果を&lt;br&gt;　フロントに返す。" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeColor=#000000;fontSize=14;fillColor=#E6FFCC;position2=0;align=left;size=40;position=0.03;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="290" width="210" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="・Repositoryは、&lt;br&gt;　Serviceから流れてきた&lt;br&gt;　キーをもとにDB処理を行う。" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeColor=#000000;fontSize=14;fillColor=#E6FFCC;position2=0.81;align=left;size=30;position=0.71;base=31;" vertex="1" parent="1">
+                    <mxGeometry x="870" y="290" width="210" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="・Serviceは、ControllerからのデータをRepositoryに流して、&lt;br&gt;　DBから帰ってきた結果を加工してContorollerに返す&lt;br&gt;・get_usage_amount は、Repositoryに get_all_items で&lt;br&gt;　ユーザの日用品情報を取得させ、買い足し間隔をもとに、&lt;br&gt;　今月および先月の日用品にかかる費用を計算する。&lt;br&gt;・get_need_item_recentry も、Repositoryに get_all_items で&lt;br&gt;　ユーザの日用品情報を取得させ、買い足し間隔をもとに、&lt;br&gt;　直近1週間以内に買う必要のある日用品を取得する。" style="shape=callout;whiteSpace=wrap;html=1;perimeter=calloutPerimeter;strokeColor=#000000;fontSize=14;fillColor=#E6FFCC;position2=0.12;align=left;size=30;position=0.08;base=31;" vertex="1" parent="1">
+                    <mxGeometry x="330" y="215" width="500" height="210" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
