@@ -14,8 +14,8 @@ public class LoginController {
 
     private final LoginService loginService;
     @GetMapping("/auth_user")
-    public void authenticate_user(@RequestParam String user_id, String password){
-        loginService.authenticate_user(user_id, password);
+    public String authenticate_user(@RequestParam String login_id, String password){
+        return loginService.authenticate_user(login_id, password);
     }
 
 }
