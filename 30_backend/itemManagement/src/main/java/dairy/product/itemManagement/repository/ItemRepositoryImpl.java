@@ -4,14 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Map;
+
 @Repository
 public class ItemRepositoryImpl implements ItemRepository{
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
     @Override
-    public void get_all_items(String user_id){
+    public List<Map<String, Object>> get_all_items(String user_id){
         String sql = "SELECT * FROM item WHERE user_id = ?";
-        System.out.println(jdbcTemplate.queryForList(sql, user_id));
+        return jdbcTemplate.queryForList(sql, user_id);
     }
 }

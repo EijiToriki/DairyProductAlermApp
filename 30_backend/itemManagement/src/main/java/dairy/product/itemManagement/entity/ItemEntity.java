@@ -14,6 +14,6 @@ public class ItemEntity {
     private String img_file_name;
     private Date register_date;
     private String span;
-    private String price;
+    private Integer price;
     private String tag;
 }
