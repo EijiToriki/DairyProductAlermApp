@@ -26,7 +26,8 @@ public class ItemService {
                     (String) queryResult.get("name"),
                     (String) queryResult.get("img_file_name"),
                     (Date) queryResult.get("register_date"),
-                    (String) queryResult.get("span"),
+                    (Integer) queryResult.get("span_num"),
+                    (String) queryResult.get("span_unit"),
                     (Integer) queryResult.get("price"),
                     (String) queryResult.get("tag")
             );
