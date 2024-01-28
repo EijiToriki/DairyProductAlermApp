@@ -22,4 +22,9 @@ public class ItemController {
         return itemService.get_all_items(user_id);
     }
 
+    @GetMapping("/recent_items")
+    public List<ItemEntity> get_recent_items(@RequestParam String user_id){
+        return itemService.get_recent_items(user_id);
+    }
+
 }
