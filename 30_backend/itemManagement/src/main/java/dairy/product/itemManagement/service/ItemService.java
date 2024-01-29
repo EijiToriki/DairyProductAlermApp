@@ -50,19 +50,18 @@ public class ItemService {
             Integer span_num = item.getSpan_num();
             String span_unit = item.getSpan_unit();
             while (true){
-                if(calc_next_purchase_date(recent_purchase_date, span_unit, span_num).isAfter(currentDate)){
+                recent_purchase_date = calc_next_purchase_date(recent_purchase_date, span_unit, span_num);
+                if(recent_purchase_date.isAfter(currentDate)) {
                     break;
-                }else{
-                    recent_purchase_date = calc_next_purchase_date(recent_purchase_date, span_unit, span_num);
                 }
             }
-            LocalDate seven_days_ago = currentDate.minusDays(8);
+            LocalDate seven_days_later = currentDate.plusDays(8);
 
-            Boolean is_before1days = recent_purchase_date.isBefore(currentDate);
-            Boolean is_after7days = recent_purchase_date.isAfter(seven_days_ago);
-            Boolean is_before_1to7days_ago = is_before1days && is_after7days;
+            Boolean is_oneday_later = recent_purchase_date.isAfter(currentDate);
+            Boolean is_before_nextweek = recent_purchase_date.isBefore(seven_days_later);
+            Boolean is_within_oneweek = is_oneday_later && is_before_nextweek;
             Boolean is_today = recent_purchase_date.isEqual(currentDate);
-            if(is_before_1to7days_ago || is_today) {
+            if(is_within_oneweek || is_today) {
                 recent_items.add(item);
             }
         }
