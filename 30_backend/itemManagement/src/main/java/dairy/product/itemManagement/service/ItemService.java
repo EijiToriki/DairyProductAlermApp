@@ -1,12 +1,12 @@
 package dairy.product.itemManagement.service;
 
 import dairy.product.itemManagement.entity.ItemEntity;
+import dairy.product.itemManagement.entity.StatisticsEntity;
 import dairy.product.itemManagement.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,7 +18,7 @@ public class ItemService {
     private final ItemRepository itemRepository;
 
     public List<ItemEntity> get_all_items(String user_id){
-        List<ItemEntity> items = new ArrayList<ItemEntity>();
+        List<ItemEntity> items = new ArrayList<>();
 
         List<Map<String, Object>> queryResults = itemRepository.get_all_items(user_id);
         for(Map<String, Object> queryResult : queryResults){
@@ -41,12 +41,11 @@ public class ItemService {
 
     public List<ItemEntity> get_recent_items(String user_id){
         List<ItemEntity> all_items = get_all_items(user_id);
-        List<ItemEntity> recent_items = new ArrayList<ItemEntity>();
+        List<ItemEntity> recent_items = new ArrayList<>();
 
         LocalDate currentDate = LocalDate.now();
         for(ItemEntity item: all_items){
-            String recent_purchase_date_str = item.getRegister_date().toString();
-            LocalDate recent_purchase_date = LocalDate.parse(recent_purchase_date_str);
+            LocalDate recent_purchase_date = date_to_localDate(item.getRegister_date());
             Integer span_num = item.getSpan_num();
             String span_unit = item.getSpan_unit();
             while (true){
@@ -57,31 +56,64 @@ public class ItemService {
             }
             LocalDate seven_days_later = currentDate.plusDays(8);
 
-            Boolean is_oneday_later = recent_purchase_date.isAfter(currentDate);
-            Boolean is_before_nextweek = recent_purchase_date.isBefore(seven_days_later);
-            Boolean is_within_oneweek = is_oneday_later && is_before_nextweek;
+            Boolean is_within_one_week = recent_purchase_date.isBefore(seven_days_later);
             Boolean is_today = recent_purchase_date.isEqual(currentDate);
-            if(is_within_oneweek || is_today) {
+            if(is_within_one_week || is_today) {
                 recent_items.add(item);
             }
         }
 
-        if(recent_items.size() != 0){
+        if(!recent_items.isEmpty()){
             return recent_items;
         }else{
             return null;
         }
     }
 
-    private LocalDate calc_next_purchase_date(LocalDate before_date, String span_unit, Integer span_num){
-        if(span_unit.equals("日")){
-            return before_date.plusDays(span_num);
-        } else if (span_unit.equals("月")) {
-            return before_date.plusMonths(span_num);
-        } else if (span_unit.equals("年")) {
-            return before_date.plusYears(span_num);
-        }else{
-            return LocalDate.now().plusDays(1);
+    public StatisticsEntity get_item_statistics(String user_id){
+        List<ItemEntity> all_items = get_all_items(user_id);
+        int last_month_total = 0;
+        int this_month_total = 0;
+
+        LocalDate currentDate = LocalDate.now();
+        int this_year = currentDate.getYear();
+        int this_month = currentDate.getMonthValue();
+        for(ItemEntity item: all_items){
+            LocalDate recent_purchase_date = date_to_localDate(item.getRegister_date());
+            Integer span_num = item.getSpan_num();
+            String span_unit = item.getSpan_unit();
+            while (true){
+                int recent_purchase_date_year = recent_purchase_date.getYear();
+                int recent_purchase_date_month = recent_purchase_date.getMonthValue();
+                if(recent_purchase_date_year >= this_year && recent_purchase_date_month > this_month) {
+                    break;
+                } else if (recent_purchase_date_year == this_year && recent_purchase_date_month == this_month) {
+                    this_month_total += item.getPrice();
+                } else if (recent_purchase_date_year == this_year && recent_purchase_date_month == this_month - 1) {
+                    last_month_total += item.getPrice();
+                } else if (recent_purchase_date_year == this_year-1 && recent_purchase_date_month == 1 ) {
+                    last_month_total += item.getPrice();
+                }
+                recent_purchase_date = calc_next_purchase_date(recent_purchase_date, span_unit, span_num);
+            }
         }
+
+        return new StatisticsEntity(
+                this_month_total, last_month_total
+        );
+    }
+
+    private LocalDate date_to_localDate(Date date){
+        String date_str = date.toString();
+        return LocalDate.parse(date_str);
+    }
+
+    private LocalDate calc_next_purchase_date(LocalDate before_date, String span_unit, Integer span_num){
+        return switch (span_unit) {
+            case "日" -> before_date.plusDays(span_num);
+            case "月" -> before_date.plusMonths(span_num);
+            case "年" -> before_date.plusYears(span_num);
+            default -> LocalDate.now().plusDays(1);
+        };
     }
 }

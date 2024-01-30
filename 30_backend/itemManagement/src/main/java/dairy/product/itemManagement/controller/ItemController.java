@@ -1,6 +1,7 @@
 package dairy.product.itemManagement.controller;
 
 import dairy.product.itemManagement.entity.ItemEntity;
+import dairy.product.itemManagement.entity.StatisticsEntity;
 import dairy.product.itemManagement.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,11 @@ public class ItemController {
     @GetMapping("/recent_items")
     public List<ItemEntity> get_recent_items(@RequestParam String user_id){
         return itemService.get_recent_items(user_id);
+    }
+
+    @GetMapping("/total")
+    public StatisticsEntity get_item_statistics(@RequestParam String user_id){
+        return itemService.get_item_statistics(user_id);
     }
 
 }
