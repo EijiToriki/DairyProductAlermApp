@@ -36,7 +36,11 @@ public class ItemService {
             items.add(itemEntity);
         }
 
-        return items;
+        if(!items.isEmpty()) {
+            return items;
+        }else{
+            return null;
+        }
     }
 
     public List<ItemEntity> get_recent_items(String user_id){
