@@ -17,6 +17,9 @@ import java.util.Map;
 public class ItemService {
     private final ItemRepository itemRepository;
 
+//  private LocalDate currentDate = LocalDate.now();
+    private final LocalDate currentDate = LocalDate.of(2024, 1, 25);
+
     public List<ItemEntity> get_all_items(String user_id){
         List<ItemEntity> items = new ArrayList<>();
 
@@ -47,7 +50,7 @@ public class ItemService {
         List<ItemEntity> all_items = get_all_items(user_id);
         List<ItemEntity> recent_items = new ArrayList<>();
 
-        LocalDate currentDate = LocalDate.now();
+
         for(ItemEntity item: all_items){
             LocalDate recent_purchase_date = date_to_localDate(item.getRegister_date());
             Integer span_num = item.getSpan_num();
@@ -79,7 +82,6 @@ public class ItemService {
         int last_month_total = 0;
         int this_month_total = 0;
 
-        LocalDate currentDate = LocalDate.now();
         int this_year = currentDate.getYear();
         int this_month = currentDate.getMonthValue();
         for(ItemEntity item: all_items){
