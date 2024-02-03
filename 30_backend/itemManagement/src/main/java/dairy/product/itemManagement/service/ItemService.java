@@ -18,7 +18,7 @@ public class ItemService {
     private final ItemRepository itemRepository;
 
 //  private LocalDate currentDate = LocalDate.now();
-    private final LocalDate currentDate = LocalDate.of(2024, 1, 25);
+    private final LocalDate currentDate = LocalDate.of(2024, 1, 31);
 
     public List<ItemEntity> get_all_items(String user_id){
         List<ItemEntity> items = new ArrayList<>();
@@ -39,11 +39,7 @@ public class ItemService {
             items.add(itemEntity);
         }
 
-        if(!items.isEmpty()) {
-            return items;
-        }else{
-            return null;
-        }
+        return items;
     }
 
     public List<ItemEntity> get_recent_items(String user_id){
@@ -57,7 +53,7 @@ public class ItemService {
             String span_unit = item.getSpan_unit();
             while (true){
                 recent_purchase_date = calc_next_purchase_date(recent_purchase_date, span_unit, span_num);
-                if(recent_purchase_date.isAfter(currentDate)) {
+                if(recent_purchase_date.isAfter(currentDate) || recent_purchase_date.isEqual(currentDate)) {
                     break;
                 }
             }
@@ -70,11 +66,7 @@ public class ItemService {
             }
         }
 
-        if(!recent_items.isEmpty()){
-            return recent_items;
-        }else{
-            return null;
-        }
+        return recent_items;
     }
 
     public StatisticsEntity get_item_statistics(String user_id){
@@ -91,13 +83,16 @@ public class ItemService {
             while (true){
                 int recent_purchase_date_year = recent_purchase_date.getYear();
                 int recent_purchase_date_month = recent_purchase_date.getMonthValue();
-                if(recent_purchase_date_year >= this_year && recent_purchase_date_month > this_month) {
+                if(
+                        recent_purchase_date_year > this_year ||
+                        recent_purchase_date_year >= this_year && recent_purchase_date_month > this_month
+                ) {
                     break;
                 } else if (recent_purchase_date_year == this_year && recent_purchase_date_month == this_month) {
                     this_month_total += item.getPrice();
                 } else if (recent_purchase_date_year == this_year && recent_purchase_date_month == this_month - 1) {
                     last_month_total += item.getPrice();
-                } else if (recent_purchase_date_year == this_year-1 && recent_purchase_date_month == 1 ) {
+                } else if (recent_purchase_date_year == this_year-1 && recent_purchase_date_month == 12 && this_month == 1) {
                     last_month_total += item.getPrice();
                 }
                 recent_purchase_date = calc_next_purchase_date(recent_purchase_date, span_unit, span_num);
