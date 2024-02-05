@@ -1,0 +1,71 @@
+.toppage{
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+}
+
+.statistics_this_month{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.statistics_sent{
+  font-size: 24px;
+}
+
+.price{
+  margin-bottom: 1%;
+  margin-left: 1%;
+  margin-right: 1%;
+  font-size: 36px;
+  font-weight: bolder;
+  color: rgb(0, 0, 0);
+}
+
+
+.statistics_compare{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.statistics_sent{
+  font-size: 24px;
+}
+
+.price_blue{
+  margin-bottom: 1%;
+  margin-left: 1%;
+  margin-right: 1%;
+  font-size: 36px;
+  font-weight: bold;
+  color: blue;
+}
+
+.price_red{
+  margin-bottom: 1%;
+  margin-left: 1%;
+  margin-right: 1%;
+  font-size: 36px;
+  font-weight: bold;
+  color: red;
+}
+
+
+.info_text{
+  margin-top: 3%;
+  margin-left: 3%;
+  font-size: 20px;
+  text-decoration-line: underline;
+}
+
+.cards{
+  margin-top: 1%;
+  margin-left: 4%;
+  margin-right: 4%;
+  display: flex;
+  justify-content: space-between;
+}
