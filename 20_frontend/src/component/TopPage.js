@@ -6,10 +6,13 @@ import CardContent from '@mui/material/CardContent';
 export const TopPage = () => {
   const total_price = 5500
   const price_diff = 700
+  const product_name = "スポンジ"
+  const product_price = 300
 
   const cardStyle = {
     width: '30%', // カードの横幅
-    height: '250px', // カードの高さ
+    height: '335px', // カードの高さ
+    marginBottom: '2%' 
   };
 
   return (
@@ -58,8 +61,16 @@ export const TopPage = () => {
         </div>
         <div className='cards'>
           <Card style={cardStyle}>
-            <CardContent>
-              
+            <CardContent className='cardcontent'>
+              <div className='product_title'>
+                {product_name}
+              </div>
+              <div className='product_price'>
+                {product_price}円
+              </div>
+              <div className='product_img'>
+                <img src='noimage.png'  style={{ width: '100%', height: 'auto'}}/>
+              </div>
             </CardContent>
           </Card>
           <Card style={cardStyle}>
@@ -72,9 +83,8 @@ export const TopPage = () => {
               {/* カードのコンテンツ */}
             </CardContent>
           </Card>
+          
         </div>
-        
-
       </div>
 
 
