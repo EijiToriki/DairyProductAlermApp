@@ -1,19 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from "axios"
 import "../css/TopPage.css"
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 
 export const TopPage = () => {
-  const total_price = 5500
-  const price_diff = 700
-  const product_name = "スポンジ"
-  const product_price = 300
+  const [recentItems, setRecentItems] = useState([])
+  const [totalPrice, setTotalPrice] = useState(0)
+  const [priceDiff, setPriceDiff] = useState(0)
 
   const cardStyle = {
     width: '30%', // カードの横幅
     height: '335px', // カードの高さ
     marginBottom: '2%' 
   };
+
+  useEffect(() => {
+    const params = {
+      user_id: 1
+    }
+    const get_recent_data = async(params) => {
+      const res = await axios.get("http://localhost:8080/recent_items", {params})
+      setRecentItems(res.data)
+    }
+    const get_statistic_data = async(params) => {
+      const res = await axios.get("http://localhost:8080/total", {params})
+      setTotalPrice(res.data.this_month)
+      setPriceDiff(res.data.last_month - res.data.this_month)
+    }
+
+    get_recent_data(params)
+    get_statistic_data(params)
+  }, [])
 
   return (
     <div className='toppage'>
@@ -22,7 +40,7 @@ export const TopPage = () => {
           今月は日用品に 
         </div>
         <div className='price'>
-            {total_price} 
+            {totalPrice} 
         </div>
         <div className='statistics_sent'>
           円使う予定です
@@ -34,10 +52,10 @@ export const TopPage = () => {
           (前月より 
         </div>
         {
-        price_diff > 0 ? 
+        priceDiff >= 0 ? 
           <>
             <div className='price_blue'>
-              {price_diff} 
+              {priceDiff} 
             </div>
             <div className='statistics_sent'>
               円 DOWN)
@@ -46,7 +64,7 @@ export const TopPage = () => {
         :
           <>
             <div className='price_red'>
-              {-price_diff} 
+              {-priceDiff} 
             </div>
             <div className='statistics_sent'>
               円 UP)
@@ -60,29 +78,29 @@ export const TopPage = () => {
           １週間以内に買足しが必要な日用品
         </div>
         <div className='cards'>
-          <Card style={cardStyle}>
-            <CardContent className='cardcontent'>
-              <div className='product_title'>
-                {product_name}
+        {
+            recentItems.length === 0 ?
+              <div className='nothing_notice'>
+                1週間以内に買足しが必要な日用品はありません
               </div>
-              <div className='product_price'>
-                {product_price}円
-              </div>
-              <div className='product_img'>
-                <img src='noimage.png'  style={{ width: '100%', height: 'auto'}}/>
-              </div>
-            </CardContent>
-          </Card>
-          <Card style={cardStyle}>
-            <CardContent>
-              {/* カードのコンテンツ */}
-            </CardContent>
-          </Card>
-          <Card style={cardStyle}>
-            <CardContent>
-              {/* カードのコンテンツ */}
-            </CardContent>
-          </Card>
+            :
+              recentItems.map((item, idx) => (
+                <Card style={cardStyle} key={idx}>
+                  <CardContent className='cardcontent'>
+                    <div className='product_title'>
+                      {item.name}
+                    </div>
+                    <div className='product_price'>
+                      {item.price}円
+                    </div>
+                    <div className='product_img'>
+                      <img src='noimage.png'  style={{ width: '100%', height: 'auto'}}/>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))
+        }
+
           
         </div>
       </div>
