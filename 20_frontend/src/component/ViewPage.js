@@ -14,7 +14,7 @@ import "../css/ViewPage.css"
 
 const cardStyle = {
   width: '30%', // カードの横幅
-  height: '335px', // カードの高さ
+  height: '400px', // カードの高さ
   marginBottom: '2%' 
 };
 
@@ -35,23 +35,25 @@ export const ViewPage = () => {
   return (
     <div>
       <div className='search_field'>
-        <TextField id="outlined-basic" label="検索ワード" variant="outlined" />
-        <FormControl >
-          <InputLabel id="demo-simple-select-label">タグ</InputLabel>
+        <TextField id="outlined-basic" label="検索ワード" variant="outlined" style={{ width: '35%'}} />
+        <FormControl style={{ width: '30%'}}>
+          <InputLabel id="tag">タグ</InputLabel>
           <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
+            labelId="tag"
+            id="tag"
+            label="タグ"
           >
             <MenuItem value={10}>風呂</MenuItem>
             <MenuItem value={20}>台所</MenuItem>
             <MenuItem value={30}>おしゃれ</MenuItem>
           </Select>
         </FormControl>
-        <FormControl >
-          <InputLabel id="demo-simple-select-label">ソート順</InputLabel>
+        <FormControl style={{ width: '30%'}}>
+          <InputLabel id="sort">ソート順</InputLabel>
           <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
+            labelId="sort"
+            id="sort"
+            label="ソート順"
           >
             <MenuItem value={10}>五十音順</MenuItem>
             <MenuItem value={20}>五十音順（逆）</MenuItem>
@@ -86,6 +88,7 @@ export const ViewPage = () => {
                     <div className='product_img'>
                       <img src='noimage.png'  style={{ width: '100%', height: 'auto'}}/>
                     </div>
+                    <button className='buttonOutline'>削除</button>
                   </CardContent>
                 </Card>
               ))
