@@ -92,6 +92,26 @@ export const ViewPage = () => {
     }
   }
 
+  const handleDelete = async(item_id, user_id) => {
+    await axios.delete(
+      `http://localhost:8080/delete_item?item_id=${item_id}&user_id=${user_id}`
+    )
+    setAllItems(
+      allItems.filter(item => {
+        return item.id !== item_id || item.user_id !== user_id;
+      })
+    )
+
+    setFilteredItems(
+      filteredItems.filter(item => {
+        return item.id !== item_id || item.user_id !== user_id;
+      })
+    )
+
+
+
+  }
+
 
 
   return (
@@ -161,7 +181,7 @@ export const ViewPage = () => {
                     <div className='product_img'>
                       <img src='noimage.png'  style={{ width: '100%', height: 'auto'}}/>
                     </div>
-                    <button className='buttonOutline'>削除</button>
+                    <button className='buttonOutline' onClick={() => handleDelete(item.id, item.user_id)}>削除</button>
                   </CardContent>
                 </Card>
               ))

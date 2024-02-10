@@ -5,6 +5,7 @@ import dairy.product.itemManagement.entity.StatisticsEntity;
 import dairy.product.itemManagement.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -116,5 +117,14 @@ public class ItemService {
             case "年" -> before_date.plusYears(span_num);
             default -> LocalDate.now().plusDays(1);
         };
+    }
+
+    public int deleteItems(String item_id, String user_id){
+        int delete_row_num = itemRepository.delete_item(item_id, user_id);
+        if(delete_row_num == 1){    // 正常時
+            return 0;
+        }else{                      // 異常時
+            return -1;
+        }
     }
 }

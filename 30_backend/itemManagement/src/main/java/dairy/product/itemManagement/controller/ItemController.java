@@ -33,4 +33,11 @@ public class ItemController {
         return itemService.get_item_statistics(user_id);
     }
 
+    @DeleteMapping("/delete_item")
+    public int deleteItem(
+            @RequestParam("item_id") String item_id,
+            @RequestParam("user_id") String user_id){
+        return itemService.deleteItems(item_id, user_id);
+    }
+
 }

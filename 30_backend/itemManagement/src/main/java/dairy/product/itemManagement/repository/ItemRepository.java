@@ -8,4 +8,5 @@ import java.util.Map;
 @Repository
 public interface ItemRepository {
     List<Map<String, Object>> get_all_items(String user_id);
+    int delete_item(String item_id, String user_id);
 }
