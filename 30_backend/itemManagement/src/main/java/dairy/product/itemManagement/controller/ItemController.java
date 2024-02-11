@@ -1,6 +1,7 @@
 package dairy.product.itemManagement.controller;
 
 import dairy.product.itemManagement.entity.ItemEntity;
+import dairy.product.itemManagement.entity.RegisterItemEntity;
 import dairy.product.itemManagement.entity.StatisticsEntity;
 import dairy.product.itemManagement.service.ItemService;
 import lombok.RequiredArgsConstructor;
@@ -38,6 +39,11 @@ public class ItemController {
             @RequestParam("item_id") String item_id,
             @RequestParam("user_id") String user_id){
         return itemService.deleteItems(item_id, user_id);
+    }
+
+    @PostMapping("/register_item")
+    public int register_item(@RequestBody RegisterItemEntity registerItemEntity){
+        return itemService.registerItem(registerItemEntity);
     }
 
 }

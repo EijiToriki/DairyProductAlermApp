@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -26,5 +27,18 @@ public class ItemRepositoryImpl implements ItemRepository{
         String sql = "DELETE FROM item WHERE id = ? AND user_id = ?";
         return jdbcTemplate.update(sql, item_id, user_id);
 
+    }
+
+    @Override
+    @Transactional
+    public int register_item(
+            String id, String user_id, String item_name,
+            String img_file_name, Date register_date, Integer span_num,
+            String span_unit, Integer price, String tag){
+
+        String sql = "insert into item (id, user_id, name, img_file_name, register_date, span_num, span_unit, price, tag) " +
+                "values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        return jdbcTemplate.update(sql, id, user_id, item_name, img_file_name, register_date, span_num, span_unit, price, tag);
     }
 }

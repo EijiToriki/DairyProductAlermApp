@@ -10,11 +10,12 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 
 import "../css/ViewPage.css"
+import { Button } from '@mui/material';
 
 
 const cardStyle = {
   width: '30%', // カードの横幅
-  height: '400px', // カードの高さ
+  height: '370px', // カードの高さ
   marginBottom: '2%' 
 };
 
@@ -181,7 +182,14 @@ export const ViewPage = () => {
                     <div className='product_img'>
                       <img src='noimage.png'  style={{ width: '100%', height: 'auto'}}/>
                     </div>
-                    <button className='buttonOutline' onClick={() => handleDelete(item.id, item.user_id)}>削除</button>
+                    <Button 
+                      style={{ width: '50%' }} 
+                      variant="outlined" 
+                      color="inherit"
+                      onClick={() => handleDelete(item.id, item.user_id)}
+                    >
+                      削除
+                    </Button>
                   </CardContent>
                 </Card>
               ))
