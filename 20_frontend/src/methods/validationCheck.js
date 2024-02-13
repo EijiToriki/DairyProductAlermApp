@@ -18,4 +18,4 @@ const isNumeric = (val) => {
 
 
 
-export {emptyCheck, initialValCheck, isNumeric}
+export {emptyCheck, isNumeric}

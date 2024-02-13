@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 export const Sidebar = () => {
   const navigate = useNavigate()
-  const [btnNum, setBtnNum] = useState(1)
+  const [btnNum, setBtnNum] = useState(0)
 
   const handlePageTransition = (pageName, btnNum) => {
     setBtnNum(btnNum)

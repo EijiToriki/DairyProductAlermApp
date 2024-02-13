@@ -5,6 +5,7 @@ import { Sidebar } from './component/Sidebar';
 import { TopPage } from './component/TopPage';
 import { ViewPage } from './component/ViewPage';
 import { RegisterPage } from './component/RegisterPage';
+import { Login } from './component/Login';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           </div>
           <div className='content'>
             <Routes>
+              <Route exact path="/" element={<Login />} />
               <Route exact path="/top" element={<TopPage />} />
               <Route exact path="/view" element={<ViewPage />} />
               <Route exact path="/register" element={<RegisterPage />} />
