@@ -1,13 +1,22 @@
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom'
 import { Header } from './component/Header';
 import { Sidebar } from './component/Sidebar';
 import { TopPage } from './component/TopPage';
 import { ViewPage } from './component/ViewPage';
 import { RegisterPage } from './component/RegisterPage';
 import { Login } from './component/Login';
+import { useState } from 'react';
+import { Alert } from '@mui/material';
 
 function App() {
+  const [loginFlg, setLoginFlg] = useState(true)
+  const loginState = null // Todo : Reducerで状態取得する
+
+  const noLogin = () => {
+    setLoginFlg(false)
+  }
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -16,9 +25,17 @@ function App() {
         </div>
         <div className='main'>
           <div className='sidebar'>
-            <Sidebar />
+            <Sidebar noLogin={noLogin}/>
           </div>
           <div className='content'>
+            {
+              loginFlg ?
+              <></>
+              :
+              <Alert severity='error' onClose={() => {setLoginFlg(true)}} width='100%' >
+                ログインしてください
+              </Alert>
+            }
             <Routes>
               <Route exact path="/" element={<Login />} />
               <Route exact path="/top" element={<TopPage />} />

@@ -2,13 +2,20 @@ import React, { useState } from 'react'
 import "../css/Sidebar.css"
 import { useNavigate } from 'react-router-dom'
 
-export const Sidebar = () => {
+export const Sidebar = ({noLogin}) => {
   const navigate = useNavigate()
   const [btnNum, setBtnNum] = useState(0)
 
+  const loginState = null // Todo : Reducerで状態取得する
+
   const handlePageTransition = (pageName, btnNum) => {
-    setBtnNum(btnNum)
-    navigate(pageName)
+    if(loginState === null){
+      navigate("/")
+      noLogin()
+    }else{
+      setBtnNum(btnNum)
+      navigate(pageName)
+    }
   }
 
   return (
