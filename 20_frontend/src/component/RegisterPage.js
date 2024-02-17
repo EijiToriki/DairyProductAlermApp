@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import "../css/RegisterPage.css"
 import { FormControl, InputLabel, Select, TextField, MenuItem, Button, Alert } from '@mui/material';
 import { emptyCheck, isNumeric } from '../methods/validationCheck';
+import { useSelector } from 'react-redux';
 
 export const RegisterPage = () => {
   const [image, setImage] = useState(null);
@@ -12,6 +13,7 @@ export const RegisterPage = () => {
   const [spanNum, setSpanNum] = useState("");
   const [spanUnit, setSpanUnit] = useState("");
   const [resRslt, setResRslt] = useState(0);
+  const userId = useSelector(state => state.authorize.user_id)
 
   const handleImageChange = (e) => {
     const selectedImage = e.target.files[0];
@@ -39,7 +41,7 @@ export const RegisterPage = () => {
       setResRslt(-7)
     }else{
       const dataToSend = {
-        user_id : 1,
+        user_id : userId,
         name: name,
         img_file_name: "sample_img.png",
         span_num: spanNum,

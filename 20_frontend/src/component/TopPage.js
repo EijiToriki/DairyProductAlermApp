@@ -3,11 +3,13 @@ import axios from "axios"
 import "../css/TopPage.css"
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import { useSelector } from 'react-redux';
 
 export const TopPage = () => {
   const [recentItems, setRecentItems] = useState([])
   const [totalPrice, setTotalPrice] = useState(0)
   const [priceDiff, setPriceDiff] = useState(0)
+  const userId = useSelector(state => state.authorize.user_id)
 
   const cardStyle = {
     width: '30%', // カードの横幅
@@ -17,7 +19,7 @@ export const TopPage = () => {
 
   useEffect(() => {
     const params = {
-      user_id: 1
+      user_id: userId
     }
     const get_recent_data = async(params) => {
       const res = await axios.get("http://localhost:8080/recent_items", {params})

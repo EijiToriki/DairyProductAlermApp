@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import "../css/Sidebar.css"
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 export const Sidebar = ({noLogin}) => {
   const navigate = useNavigate()
   const [btnNum, setBtnNum] = useState(0)
 
-  const loginState = null // Todo : Reducerで状態取得する
+  const loginState = useSelector(state => state.authorize.user_id)
 
   const handlePageTransition = (pageName, btnNum) => {
     if(loginState === null){

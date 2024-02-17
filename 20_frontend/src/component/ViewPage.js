@@ -11,6 +11,7 @@ import CardContent from '@mui/material/CardContent';
 
 import "../css/ViewPage.css"
 import { Button } from '@mui/material';
+import { useSelector } from 'react-redux';
 
 
 const cardStyle = {
@@ -25,10 +26,11 @@ export const ViewPage = () => {
   const [word, setWord] = useState("")
   const [tag, setTag] = useState("")
   const [sortMode, setSortMode] = useState("")
+  const userId = useSelector(state => state.authorize.user_id)
 
   useEffect(() => {
     const params = {
-      user_id: 1
+      user_id: userId
     }
     const get_all_data = async(params) => {
       const res = await axios.get("http://localhost:8080/all_items", {params})
