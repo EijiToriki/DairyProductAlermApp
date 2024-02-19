@@ -25,6 +25,7 @@ export const ViewPage = () => {
   const [filteredItems, setFilteredItems] = useState([])
   const [word, setWord] = useState("")
   const [tag, setTag] = useState("")
+  const [searchTags, setSearchTags] = useState([])
   const [sortMode, setSortMode] = useState("")
   const userId = useSelector(state => state.authorize.user_id)
 
@@ -36,6 +37,7 @@ export const ViewPage = () => {
       const res = await axios.get("http://localhost:8080/all_items", {params})
       setAllItems(res.data)
       setFilteredItems(res.data)
+      setSearchTags([...new Set(res.data.map(item => item.tag))])
     }
     get_all_data(params)
   }, [])
@@ -137,9 +139,11 @@ export const ViewPage = () => {
             label="タグ"
             onChange={handleTagSelect}
           >
-            <MenuItem value={'風呂'}>風呂</MenuItem>
-            <MenuItem value={'台所'}>台所</MenuItem>
-            <MenuItem value={'おしゃれ'}>おしゃれ</MenuItem>
+            {
+              searchTags.map((item, idx) => (
+                <MenuItem value={item} key={idx}>{item}</MenuItem>
+              ))
+            }
           </Select>
         </FormControl>
         <FormControl style={{ width: '30%'}}>
