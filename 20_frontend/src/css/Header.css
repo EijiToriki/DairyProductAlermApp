@@ -11,10 +11,16 @@
   padding-left: 5%;
   font-size: 180%;
   font-weight: bold; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .headerSubTitle{
   padding-left: 5%;
   font-size: 80%;
   font-weight: 100;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

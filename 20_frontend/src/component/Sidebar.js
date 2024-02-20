@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import "../css/Sidebar.css"
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { Button } from '@mui/material'
 
 export const Sidebar = ({noLogin}) => {
   const navigate = useNavigate()
@@ -20,27 +21,57 @@ export const Sidebar = ({noLogin}) => {
   }
 
   return (
-    <div className='sidebar'>
+    <div className='sidebarParent'>
+      <div className='sidebarBtn'>
       {
         btnNum === 1 ?
-        <button className='buttonOutlineRed' disabled={true}>TOPへ</button>
+        <Button 
+          style={{ width: '80%' }} variant="outlined" 
+          color="inherit" disabled={true}>
+            TOPへ
+        </Button>
         :
-        <button className='buttonOutline' onClick={() => handlePageTransition("/top", 1)} >TOPへ</button>
+        <Button 
+          style={{ width: '80%' }}  variant="outlined" color="inherit"  
+          onClick={() => handlePageTransition("/top", 1)} >
+            TOPへ
+        </Button>
       }
+      </div>
 
+      <div className='sidebarBtn'>
       {
         btnNum === 2 ?
-        <button className='buttonOutlineRed' disabled={true}>日用品一覧</button>
+        <Button 
+          style={{ width: '80%' }} variant="outlined" 
+          color="inherit" disabled={true}>
+          日用品一覧
+        </Button>
         :
-        <button className='buttonOutline' onClick={() => handlePageTransition("/view", 2)}>日用品一覧</button>
+        <Button 
+          style={{ width: '80%' }} variant="outlined" color="inherit"
+          onClick={() => handlePageTransition("/view", 2)}>
+            日用品一覧
+          </Button>
       }
+      </div>
 
+      <div className='sidebarBtn'>
       {
         btnNum === 3 ?
-        <button className='buttonOutlineRed' disabled={true}>日用品登録</button>
+          <Button 
+          style={{ width: '80%' }} variant="outlined" 
+          color="inherit" disabled={true}>
+          日用品登録
+        </Button>
         :
-        <button className='buttonOutline' onClick={() => handlePageTransition("/register", 3)}>日用品登録</button>
+        <Button 
+          style={{ width: '80%' }} variant="outlined" color="inherit"
+          onClick={() => handlePageTransition("/register", 3)}>
+            日用品登録
+        </Button>
       }
+      </div>
     </div>
   )
 }
