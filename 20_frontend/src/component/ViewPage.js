@@ -16,7 +16,7 @@ import { useSelector } from 'react-redux';
 
 const cardStyle = {
   width: '30%', // カードの横幅
-  height: '370px', // カードの高さ
+  height: '20%', // カードの高さ
   marginBottom: '2%' 
 };
 
@@ -112,12 +112,7 @@ export const ViewPage = () => {
         return item.id !== item_id || item.user_id !== user_id;
       })
     )
-
-
-
   }
-
-
 
   return (
     <div>

@@ -24,3 +24,10 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.logoutButton{
+  width: 30%;
+  display: flex;
+  justify-content: right;
+  margin-right: 5%;
+}
