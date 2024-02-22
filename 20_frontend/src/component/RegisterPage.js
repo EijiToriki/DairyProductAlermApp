@@ -15,9 +15,19 @@ export const RegisterPage = () => {
   const [resRslt, setResRslt] = useState(0);
   const userId = useSelector(state => state.authorize.user_id)
 
+  console.log(image)
   const handleImageChange = (e) => {
-    const selectedImage = e.target.files[0];
-    setImage(selectedImage);
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader(); // ファイルを読み込むためのFileReaderオブジェクトを作成
+
+      reader.onload = () => {
+        // 読み込んだ画像のURLをstateにセット
+        setImage(reader.result);
+      };
+
+      reader.readAsDataURL(file); // 画像をDataURLとして読み込む
+    }
   };
 
   const handleFieldChange = (e, setFunction) => {
@@ -104,12 +114,28 @@ export const RegisterPage = () => {
     }
       <div className='upload_form'>
         <div className='upload_img'>
-          <label htmlFor="fileInput" className="image_label">
-            <div className='label_container'>
-              画像ファイルを選択
-            </div>
-          </label>
-          <input id="fileInput" type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }} />
+          {image ?
+            <>
+              <div>
+                <img src={image} alt="選択した画像" style={{ maxWidth: '100%', height: 'auto' }} />
+              </div>
+              <label htmlFor="fileInput" className="image_label_select">
+                <div className='label_container'>
+                  画像ファイルを再選択
+                </div>
+              </label>
+              <input id="fileInput" type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }} />
+            </>
+            :
+            <>
+              <label htmlFor="fileInput" className="image_label">
+                <div className='label_container'>
+                  画像ファイルを選択
+                </div>
+              </label>
+              <input id="fileInput" type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }} />
+            </>
+          }
         </div>
         <div className='item_form'>
           <div className='item_name'>

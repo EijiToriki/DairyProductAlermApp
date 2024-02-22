@@ -18,6 +18,14 @@
   cursor: pointer; /* ポインターを表示 */
 }
 
+.image_label_select {
+  margin-top: 2%;
+  border: 2px solid #ccc; /* 枠線のスタイルを設定 */
+  display: inline-block; /* インラインブロック要素にする */
+  padding: 10px 20px; /* パディングを設定 */
+  cursor: pointer; /* ポインターを表示 */
+}
+
 .label_container {
   display: inline-block;
 }
