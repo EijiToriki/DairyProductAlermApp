@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 
 export const RegisterPage = () => {
   const [image, setImage] = useState(null);
+  const [sendImage, setSendImage] = useState(null);
   const [name, setName] = useState("");
   const [tag, setTag] = useState("");
   const [price, setPrice] = useState("");
@@ -19,13 +20,13 @@ export const RegisterPage = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader(); // ファイルを読み込むためのFileReaderオブジェクトを作成
+      setSendImage(file)
 
+      const reader = new FileReader(); // ファイルを読み込むためのFileReaderオブジェクトを作成
       reader.onload = () => {
         // 読み込んだ画像のURLをstateにセット
         setImage(reader.result);
       };
-
       reader.readAsDataURL(file); // 画像をDataURLとして読み込む
     }
   };
@@ -50,19 +51,31 @@ export const RegisterPage = () => {
     }else if(emptyCheck(spanUnit) === -1){
       setResRslt(-7)
     }else{
-      const dataToSend = {
-        user_id : userId,
-        name: name,
-        img_file_name: "sample_img.png",
-        span_num: spanNum,
-        span_unit: spanUnit,
-        price: price,
-        tag: tag
-      }
+      // const dataToSend = {
+      //   user_id : userId,
+      //   name: name,
+      //   img_file_name: "sample_img.png",
+      //   span_num: spanNum,
+      //   span_unit: spanUnit,
+      //   price: price,
+      //   tag: tag,
+      //   image: sendImage
+      // }
 
-      await axios.post("http://localhost:8080/register_item", dataToSend, {
+      const formData = new FormData();
+      formData.append('user_id', userId);
+      formData.append('name', name);
+      formData.append('img_file_name', 'sample_img.png');
+      formData.append('span_num', spanNum);
+      formData.append('span_unit', spanUnit);
+      formData.append('price', price);
+      formData.append('tag', tag);
+      formData.append('image', sendImage);
+
+      await axios.post("http://localhost:8080/register_item", formData, {
         headers: {
-          'Content-Type': 'application/json',
+          // 'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data'
         },
       })
       setName("")

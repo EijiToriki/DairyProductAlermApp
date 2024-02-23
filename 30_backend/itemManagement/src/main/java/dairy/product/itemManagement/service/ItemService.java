@@ -6,8 +6,9 @@ import dairy.product.itemManagement.entity.StatisticsEntity;
 import dairy.product.itemManagement.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
@@ -127,21 +128,22 @@ public class ItemService {
         }
     }
 
-    public int registerItem(RegisterItemEntity registerItemEntity){
+    public int registerItem(String user_id,
+                            String item_name,
+                            String img_file_name,
+                            Integer span_num,
+                            String span_unit,
+                            Integer price,
+                            String tag,
+                            byte[] image){
+
         String id = UUID.randomUUID().toString();
-        String user_id = registerItemEntity.getUser_id();
-        String item_name = registerItemEntity.getName();
-        String img_file_name = registerItemEntity.getImg_file_name();
         Date register_date = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
-        Integer span_num = registerItemEntity.getSpan_num();
-        String span_unit = registerItemEntity.getSpan_unit();
-        Integer price = registerItemEntity.getPrice();
-        String tag = registerItemEntity.getTag();
 
         return itemRepository.register_item(
                 id, user_id, item_name,
                 img_file_name, register_date, span_num,
-                span_unit, price, tag
+                span_unit, price, tag, image
         );
     }
 }

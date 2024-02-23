@@ -2,11 +2,9 @@ package dairy.product.itemManagement.repository;
 
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 @Repository
 public interface ItemRepository {
@@ -22,6 +20,7 @@ public interface ItemRepository {
             Integer span_num,
             String span_unit,
             Integer price,
-            String tag
+            String tag,
+            byte[] image
     );
 }

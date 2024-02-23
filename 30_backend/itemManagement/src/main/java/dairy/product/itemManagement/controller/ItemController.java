@@ -7,7 +7,9 @@ import dairy.product.itemManagement.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -42,8 +44,23 @@ public class ItemController {
     }
 
     @PostMapping("/register_item")
-    public int register_item(@RequestBody RegisterItemEntity registerItemEntity){
-        return itemService.registerItem(registerItemEntity);
+    public int register_item(@RequestPart("user_id") String userId,
+                             @RequestPart("name") String name,
+                             @RequestPart("img_file_name") String imgFileName,
+                             @RequestPart("span_num") Integer spanNum,
+                             @RequestPart("span_unit") String spanUnit,
+                             @RequestPart("price") Integer price,
+                             @RequestPart("tag") String tag,
+                             @RequestPart("image") MultipartFile image){
+
+        try {
+            byte[] imageByte = image.getBytes();
+            return itemService.registerItem(
+                    userId, name, imgFileName, spanNum, spanUnit, price, tag, imageByte
+            );
+        }catch (IOException e){
+            return -1;
+        }
     }
 
 }
