@@ -36,7 +36,7 @@ public class ItemRepositoryImpl implements ItemRepository{
             String img_file_name, Date register_date, Integer span_num,
             String span_unit, Integer price, String tag, byte[] image){
 
-        String sql = "insert into item (id, user_id, name, img_file_name, register_date, span_num, span_unit, price, tag, image) " +
+        String sql = "insert into item (id, user_id, name, img_file_name, register_date, span_num, span_unit, price, tag, image_data) " +
                 "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         return jdbcTemplate.update(sql, id, user_id, item_name, img_file_name, register_date, span_num, span_unit, price, tag, image);

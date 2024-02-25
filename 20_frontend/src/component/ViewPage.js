@@ -38,6 +38,7 @@ export const ViewPage = () => {
       setAllItems(res.data)
       setFilteredItems(res.data)
       setSearchTags([...new Set(res.data.map(item => item.tag))])
+      console.log(res.data)
     }
     get_all_data(params)
   }, [])
@@ -181,7 +182,13 @@ export const ViewPage = () => {
                       {item.price}円
                     </div>
                     <div className='product_img'>
-                      <img src='noimage.png'  style={{ width: '100%', height: 'auto'}}/>
+                      {
+                        item.image_data ?
+                          // console.log(item.image)
+                          <img src={`data:image/png;base64,${item.image_data}`} style={{ width: '100%', height: 'auto' }} alt={item.name} />
+                        :
+                          <img src='noimage.png'  style={{ width: '100%', height: 'auto'}}/>
+                      }
                     </div>
                     <Button 
                       style={{ width: '50%' }} 

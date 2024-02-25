@@ -16,7 +16,6 @@ export const RegisterPage = () => {
   const [resRslt, setResRslt] = useState(0);
   const userId = useSelector(state => state.authorize.user_id)
 
-  console.log(image)
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {

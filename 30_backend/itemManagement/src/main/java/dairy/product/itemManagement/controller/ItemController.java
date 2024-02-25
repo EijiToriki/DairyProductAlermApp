@@ -44,14 +44,14 @@ public class ItemController {
     }
 
     @PostMapping("/register_item")
-    public int register_item(@RequestPart("user_id") String userId,
-                             @RequestPart("name") String name,
-                             @RequestPart("img_file_name") String imgFileName,
-                             @RequestPart("span_num") Integer spanNum,
-                             @RequestPart("span_unit") String spanUnit,
-                             @RequestPart("price") Integer price,
-                             @RequestPart("tag") String tag,
-                             @RequestPart("image") MultipartFile image){
+    public int register_item(@RequestParam("user_id") String userId,
+                             @RequestParam("name") String name,
+                             @RequestParam("img_file_name") String imgFileName,
+                             @RequestParam("span_num") Integer spanNum,
+                             @RequestParam("span_unit") String spanUnit,
+                             @RequestParam("price") Integer price,
+                             @RequestParam("tag") String tag,
+                             @RequestParam("image") MultipartFile image){
 
         try {
             byte[] imageByte = image.getBytes();

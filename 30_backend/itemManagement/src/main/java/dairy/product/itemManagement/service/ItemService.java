@@ -35,7 +35,8 @@ public class ItemService {
                     (Integer) queryResult.get("span_num"),
                     (String) queryResult.get("span_unit"),
                     (Integer) queryResult.get("price"),
-                    (String) queryResult.get("tag")
+                    (String) queryResult.get("tag"),
+                    (byte[]) queryResult.get("image_data")
             );
             items.add(itemEntity);
         }

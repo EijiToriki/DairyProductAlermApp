@@ -17,4 +17,5 @@ public class ItemEntity {
     private String span_unit;
     private Integer price;
     private String tag;
+    private byte[] image_data;
 }
