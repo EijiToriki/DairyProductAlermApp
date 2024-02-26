@@ -18,8 +18,8 @@ import java.util.*;
 public class ItemService {
     private final ItemRepository itemRepository;
 
-//  private LocalDate currentDate = LocalDate.now();
-    private final LocalDate currentDate = LocalDate.of(2024, 1, 31);
+  private LocalDate currentDate = LocalDate.now();
+//    private final LocalDate currentDate = LocalDate.of(2024, 1, 31);
 
     public List<ItemEntity> get_all_items(String user_id){
         List<ItemEntity> items = new ArrayList<>();

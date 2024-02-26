@@ -13,7 +13,7 @@ export const TopPage = () => {
 
   const cardStyle = {
     width: '30%', // カードの横幅
-    height: '335px', // カードの高さ
+    height: '20%', // カードの高さ
     marginBottom: '2%' 
   };
 
@@ -96,7 +96,12 @@ export const TopPage = () => {
                       {item.price}円
                     </div>
                     <div className='product_img'>
-                      <img src='noimage.png'  style={{ width: '100%', height: 'auto'}}/>
+                      {
+                        item.image_data ?
+                          <img src={`data:image/png;base64,${item.image_data}`} style={{ width: '100%', height: 'auto' }} alt={item.name} />
+                        :
+                          <img src='noimage.png'  style={{ width: '100%', height: 'auto'}}/>
+                      }
                     </div>
                   </CardContent>
                 </Card>

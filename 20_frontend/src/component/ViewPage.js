@@ -184,7 +184,6 @@ export const ViewPage = () => {
                     <div className='product_img'>
                       {
                         item.image_data ?
-                          // console.log(item.image)
                           <img src={`data:image/png;base64,${item.image_data}`} style={{ width: '100%', height: 'auto' }} alt={item.name} />
                         :
                           <img src='noimage.png'  style={{ width: '100%', height: 'auto'}}/>
