@@ -18,6 +18,7 @@ export const RegisterPage = () => {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+    console.log(file)
     if (file) {
       setSendImage(file)
 
@@ -50,21 +51,10 @@ export const RegisterPage = () => {
     }else if(emptyCheck(spanUnit) === -1){
       setResRslt(-7)
     }else{
-      // const dataToSend = {
-      //   user_id : userId,
-      //   name: name,
-      //   img_file_name: "sample_img.png",
-      //   span_num: spanNum,
-      //   span_unit: spanUnit,
-      //   price: price,
-      //   tag: tag,
-      //   image: sendImage
-      // }
-
       const formData = new FormData();
       formData.append('user_id', userId);
       formData.append('name', name);
-      formData.append('img_file_name', 'sample_img.png');
+      formData.append('img_file_name', userId + "_" + "name" + ".png");
       formData.append('span_num', spanNum);
       formData.append('span_unit', spanUnit);
       formData.append('price', price);
@@ -73,7 +63,6 @@ export const RegisterPage = () => {
 
       await axios.post("http://localhost:8080/register_item", formData, {
         headers: {
-          // 'Content-Type': 'application/json',
           'Content-Type': 'multipart/form-data'
         },
       })
@@ -82,6 +71,8 @@ export const RegisterPage = () => {
       setPrice("")
       setSpanNum("")
       setSpanUnit("")
+      setImage(null)
+      setSendImage(null)
       setResRslt(1)
     }
   }

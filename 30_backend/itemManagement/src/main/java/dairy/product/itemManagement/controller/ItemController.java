@@ -51,10 +51,13 @@ public class ItemController {
                              @RequestParam("span_unit") String spanUnit,
                              @RequestParam("price") Integer price,
                              @RequestParam("tag") String tag,
-                             @RequestParam("image") MultipartFile image){
+                             @RequestParam(value="image", required=false) MultipartFile image){
 
         try {
-            byte[] imageByte = image.getBytes();
+            byte[] imageByte = null;
+            if(image != null) {
+                imageByte = image.getBytes();
+            }
             return itemService.registerItem(
                     userId, name, imgFileName, spanNum, spanUnit, price, tag, imageByte
             );
